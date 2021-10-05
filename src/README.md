@@ -53,5 +53,104 @@ Figured that it was smarter to make t in a char Array
 Then I fixed the words if it was too short.
 ![img_6.png](img_6.png)
 
+\
+\
+\
+\
+\
+\
+\
+\
 
+3.1 - JUnit 5
+
+Investigate JUnit 5 (Jupiter). Explain the following, and how they are useful.
+
+• @Tag
+
+Bruges til at kunne filtrere tests, hvis man vil køre en række klasse eller metode tests afhængig af det man vil teste - hvor der måske er en række klasser som hænger sammen - eller i modsatte tilfælde hvor man kun vil køre nogle enkelte metode tests i en klasse.
+
+• @Disabled
+
+Bruges til at deaktivere en klasse eller metode test. Kunne være brugbart hvis man har nogle deaktiverede funktion i et program som man senere gerne vil benytte.
+
+• @RepeatedTest
+
+En måde at køre den samme test et bestemt antal gange. Kan være nyttig hvis man har en test, hvor man har nogle parametre som kan variere fra gang til gang.
+
+• @BeforeEach, @AfterEach
+
+En annotation til at markerer at en metode skal køre før eller efter en given test. Kan bruges til at ændre noget data som en test er afhængig af.
+
+• @BeforeAll, @AfterAll
+
+Som overstående, bare hvor man kun annoterer at denne metode skal køres en enkelt gang, hvorimod den overstående @BeforeEach/@AfterEach bliver kørt hver gang.
+
+• @DisplayName
+
+En annotation som giver mulighed for at give test metoden et bestemt navn, så man nemmere kan finde den eller bedre kan forklare præcis hvad testen gør.
+
+• @Nested
+
+Annoterer at denne testklasse er en ikke statisk indlejret klasse. Giver mulighed for at have en eller flere indre klasser i en klasse, som dermed vil have samme initialisering som hovedklassen.
+
+• assumeFalse, assumeTrue
+
+Giver mulighed for at lave en "test" inde i testen, hvor man forventer at noget enten er sandt eller falsk. Hvis dette ikke passer, vil testen stoppe. Kan bruges hvis man har en test hvor der er et krav om at en variable eller et statement enten er sandt eller falsk før man kan teste det man vil teste.
+\
+\
+\
+\
+\
+**Mocking Frameworks**\
+\
+**Mockito VS. EasyMock**
+
+**Similaraties:**\
+Both EasyMock and Mockito are open-source, java-based frameworks.
+Both are typically used along with other test, like JUnit or TestNG\
+Both follow Record-Replay-Verify patterns.
+\
+\
+\
+**Differences:**\
+Mockito supports both mocking and spies, whereas EasyMock does not support spies.\
+\
+In Mockito, we use \
+Mockito.when(mock.method(args)).thenReturn(value) \
+method for mocking a method calls.
+\
+\
+In EasyMock we use \
+EasyMock.expect(mock.method(args)).andReturn(Value) \
+method for mocking a method call.\
+\
+In Mockito, the Mockito.verify(mock).method(args) is used for verifying calls to a mock.\
+\
+In EasyMock, the EasyMock.verify(mock) is used for verifying calls to a mock, but this method is always used after
+calling the EasyMock.replay(mock) method.\
+\
+In Mockito, throwing exception can be mocked using \
+.thenThrow(ExceptionClass.class)\
+after calling the Mockito.when(mock.method(args)) method.\
+\
+In EasyMock, throwing exception can be mocked using \
+.andThrow(new ExceptionClass()) \
+after calling the EasyMock.expect(..) method.
+\
+\
+\
+**Which one would you prefer, if any, and why?:**
+Mockito would be my choice.
+It seems to me that there are a lot more calls in EasyMock than in Mockito.
+Everytime you call a methos in EasyMock, you have to run the following:\
+\
+EasyMock.replay(someService);\
+SomeClass.someMethod(null);\
+EasyMock.verify(someService);\
+\
+\
+In Mockito you only have to use:\
+SomeClass.someMethod(null);
+Mockito.verifyZeroInteractions(someService);
 
