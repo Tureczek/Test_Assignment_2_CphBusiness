@@ -50,7 +50,10 @@ First test fails, while I have given zero characters. This leeds to ideas about 
 ![img_4.png](img_4.png)
 Figured that it was smarter to make t in a char Array 
 ![img_5.png](img_5.png)
+
+\
 Then I fixed the words if it was too short.
+\
 ![img_6.png](img_6.png)
 
 \
@@ -66,37 +69,36 @@ Then I fixed the words if it was too short.
 
 Investigate JUnit 5 (Jupiter). Explain the following, and how they are useful.
 
-• @Tag
+• @Tag\
+The @Tag annotation is used to filter which test should be exercuted for a given test plan. - This means that you can chose to run some test, while others will be skipped.
 
-Bruges til at kunne filtrere tests, hvis man vil køre en række klasse eller metode tests afhængig af det man vil teste - hvor der måske er en række klasser som hænger sammen - eller i modsatte tilfælde hvor man kun vil køre nogle enkelte metode tests i en klasse.
+• @Disabled\
+Is used to disable entire classes. If the annotation @Disabled is applied at a class level, then all the tests methods 
+in the given class will be disabled and not run.
 
-• @Disabled
+• @RepeatedTest\
+This annotation signals that the annotated method is a test template methode, that should be repeated a number of times. 
+Each time the test is repeated, the test would behave as if the tag was @Test with the same lifecycle callbacks and extensions.
+If one wishes to see the current number of repetitions this can be accessed by adding RepetitionInfo injection.
 
-Bruges til at deaktivere en klasse eller metode test. Kunne være brugbart hvis man har nogle deaktiverede funktion i et program som man senere gerne vil benytte.
+• @BeforeEach, @AfterEach\
+This annotations determine whether a test should be run before or after any given test. This could be used if the test is dependent on some specific output.
 
-• @RepeatedTest
+• @BeforeAll, @AfterAll\
+This is also to determine when the test should be run. Before all other tests, or after all other tests.
 
-En måde at køre den samme test et bestemt antal gange. Kan være nyttig hvis man har en test, hvor man har nogle parametre som kan variere fra gang til gang.
 
-• @BeforeEach, @AfterEach
+• @DisplayName\
+@DisplayName is used to give tests a specific name, or an explaining name. This makes the test easier to find and read for others too.
 
-En annotation til at markerer at en metode skal køre før eller efter en given test. Kan bruges til at ændre noget data som en test er afhængig af.
 
-• @BeforeAll, @AfterAll
+• @Nested\
+This is used to create a test hierarchy. This allows for a inner class in a test class.
 
-Som overstående, bare hvor man kun annoterer at denne metode skal køres en enkelt gang, hvorimod den overstående @BeforeEach/@AfterEach bliver kørt hver gang.
 
-• @DisplayName
-
-En annotation som giver mulighed for at give test metoden et bestemt navn, så man nemmere kan finde den eller bedre kan forklare præcis hvad testen gør.
-
-• @Nested
-
-Annoterer at denne testklasse er en ikke statisk indlejret klasse. Giver mulighed for at have en eller flere indre klasser i en klasse, som dermed vil have samme initialisering som hovedklassen.
-
-• assumeFalse, assumeTrue
-
-Giver mulighed for at lave en "test" inde i testen, hvor man forventer at noget enten er sandt eller falsk. Hvis dette ikke passer, vil testen stoppe. Kan bruges hvis man har en test hvor der er et krav om at en variable eller et statement enten er sandt eller falsk før man kan teste det man vil teste.
+• assumeFalse, assumeTrue\
+Gives the opportunity to make a test within the test. To clarify, if you run a test that is dependent on a statement being true, but this isn't something that we can control.
+We then dont want to run the test, if the statement is false. so the assumeTrue win terminate the test, given that the statement is false, but will continue the test if the required statement is true.
 \
 \
 \
