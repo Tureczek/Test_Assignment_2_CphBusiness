@@ -144,15 +144,15 @@ after calling the EasyMock.expect(..) method.
 \
 **Which one would you prefer, if any, and why?:**
 Mockito would be my choice.
-It seems to me that there are a lot more calls in EasyMock than in Mockito.
+\It seems to me that there are a lot more calls in EasyMock than in Mockito.
 Everytime you call a methos in EasyMock, you have to run the following:\
 \
-EasyMock.replay(someService);\
-SomeClass.someMethod(null);\
-EasyMock.verify(someService);\
+\EasyMock.replay(someService);\
+\SomeClass.someMethod(null);\
+\EasyMock.verify(someService);\
 \
 \
 In Mockito you only have to use:\
-SomeClass.someMethod(null);
-Mockito.verifyZeroInteractions(someService);
+\SomeClass.someMethod(null);
+\Mockito.verifyZeroInteractions(someService);
 
